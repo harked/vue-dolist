@@ -1,8 +1,8 @@
 <template>
     <div class="todo-container">
         <h1> Move forward today! </h1>
-        <div v-bind:key="list.id" v-for="list in todos">
-            <Todoitem v-bind:todo="list" />
+        <div v-bind:key="todo.id" v-for="todo in todos">
+            <Todoitem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)" />
         </div>
     </div>
 </template>

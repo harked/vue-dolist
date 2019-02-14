@@ -1,6 +1,5 @@
 <template>
     <div class="todo-container">
-        <h1> Move forward today! </h1>
         <div v-bind:key="todo.id" v-for="todo in todos">
             <Todoitem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)" />
         </div>
@@ -8,7 +7,7 @@
 </template>
 
 <script>
-import Todoitem from './Todoitem.vue';
+import Todoitem from './TodoItem.vue';
 
 export default {
     name: "Todos",

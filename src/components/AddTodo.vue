@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import uuid from 'uuid';
+// import uuid from 'uuid'; comment while using jsonplaceholder
 
 export default {
     name: "AddTodo",
@@ -22,7 +22,7 @@ export default {
             e.preventDefault();
 
             const newTodo = {
-                id: uuid.v4(),
+                // id: uuid.v4(), comment while using jsonplaceholder
                 title: this.title,
                 completed: false
             }

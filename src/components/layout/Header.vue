@@ -2,9 +2,9 @@
     <header class="header">
         <h1> Move Forward Today!</h1>
         <div id="nav">
-            <router-link to="/">Home</router-link> | 
-            <router-link to="/about">About</router-link> | 
-            <router-link to="/contact">Contact</router-link>
+            <router-link to="/"> To-do </router-link> | 
+            <router-link to="/about"> About </router-link> | 
+            <router-link to="/contact"> Callme </router-link>
         </div>
     </header>
 </template>
@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
     .header {
-        background: #333;
+        background: #2896d7;
         color: #fff;
         text-align: center;
         padding: 10px;

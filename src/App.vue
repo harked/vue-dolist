@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="todo-app">
+    <img alt="Vue-dolist!" src="./assets/todo-cloud-hero.png">
     <Header />
     <router-view />
   </div>
@@ -7,8 +8,9 @@
 
 <script>
 import Header from './components/layout/Header';
+
 export default {
-  name: "app",
+  name: "todo-app",
   components: {
     Header
   }
@@ -18,25 +20,37 @@ export default {
 <style>
   * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
-
+  
   body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: #2c3e50;
+    font-family: Karla, sans-serif;
+    font-size: 16px;
+    margin: 0;
   }
 
-  .btn {
-    display: inline-block;
-    border: none;
-    background: #555;
-    color: #fff;
-    padding: 7px 20px;
-    cursor: pointer;
+  #todo-app {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 0 10px;
   }
 
-  .btn:hover {
-    background: #666;
+  img {
+    display: block;
+    height: 80px;
+    margin: 0 auto 15px auto;
+  }
+
+  p.title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .blue-todo {
+    color: #2896d7;
   }
 </style>

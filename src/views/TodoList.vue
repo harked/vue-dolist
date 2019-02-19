@@ -25,6 +25,10 @@
       </div>
     </div>
 
+    <footer>
+      <span>{{ remaining }} item(s) left.</span>
+    </footer>
+
   </div>
 </template>
 
@@ -62,6 +66,13 @@
         },
         // Toogle checkbox
         deep: true
+      }
+    },
+
+    computed: {
+      remaining() {
+        return this.todos.filter(todo => !todo.completed).length;
+        // return filters.active(this.todos).length
       }
     },
 
@@ -279,5 +290,13 @@
 
   .list:hover .delete-list {
     display: inline-block;
+  }
+
+  footer {
+    padding: 8px 15px;
+    background: #2896d7;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
   }
 </style>

@@ -17,9 +17,20 @@
             <input type="checkbox" v-model="todo.completed">
             <span></span>
           </label>
-          <div class="text" :class="{completed: todo.completed}"> 
-            {{ todo.text }}
-            <span title="Remove list" class="delete-list" @click="removeTodo(todo)"></span>
+          <div  class="text" :class="{completed: todo.completed}" 
+                v-if="!todo.editing" 
+                @dblclick="todo.editing=true; editTodoCache=todo.text"> {{ todo.text }}
+                <span title="Remove list" class="delete-list" @click="removeTodo(todo)"></span>
+          </div>
+          <div class="vuedo_input" v-else>
+            <div class="vuedo_input_wrapper">
+              <input  type="text" 
+                      v-focus 
+                      v-model="todo.text" 
+                      @keyup.enter="editTodo(todo)" 
+                      @keyup.esc="cancelEdit(todo)" 
+                      @blur="editTodo(todo)"/>
+            </div>
           </div>
         </div>
       </div>
@@ -34,10 +45,10 @@
 
 <script>
   // localStorage persistence
-  const STORAGE_KEY = 'vue-do-list-cnstack-2.0'
+  const STORAGE_KEY = 'vue-do-list-cnstack-4.0'
   const todoStorage = {
     fetch: function () {
-      let todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
+      var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
       todos.forEach(function (todo, index) {
         todo.id = index
       })
@@ -55,6 +66,7 @@
     data() {
       return {
         newTodo: "",
+        editTodoCache: "",
         todos: todoStorage.fetch()
       };
     },
@@ -85,7 +97,10 @@
         this.todos.push({
           id: todoStorage.uid++,
           text: this.newTodo,
+          components: false,
+          editing: false
         });
+        // Emptying input
         this.newTodo = "";
       },
 
@@ -93,7 +108,25 @@
         this.todos.splice(this.todos.indexOf(todo), 1)
       },
 
+      editTodo(todo) {
+        if (todo.text.trim() == "") todo.text = this.editTodoCache;
+        todo.editing = false;
+      },
+
+      cancelEdit(todo) {
+        todo.text = this.editTodoCache;
+        todo.editing = false;
+      }
     },
+
+    directives: {
+      focus: {
+        // While double click, focus on input
+        inserted(el) {
+          el.focus();
+        }
+      }
+    }
   };
 </script>
 
@@ -186,6 +219,7 @@
   .vuedo-material-checkbox {
     position: relative;
     display: inline-block;
+    color: rgba(0, 0, 0, 0.87);
     cursor: pointer;
     font-size: 14px;
     line-height: 18px;
@@ -204,6 +238,7 @@
     border-radius: 50%;
     width: 18px;
     height: 18px;
+    background-color: rgba(0, 0, 0, 0.42);
     outline: none;
     opacity: 0;
     transform: scale(1);

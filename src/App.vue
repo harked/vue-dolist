@@ -10,7 +10,6 @@
     <p class="title"> What are You going <span class="blue-todo">to-Do</span> when you are not saving the world? </p>
 
     <router-view />
-    <TodoList />
   </div>
 </template>
 

@@ -32,7 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Credits (Image/Tools) : <br />
 ```
-http://taylorehat.com/images/todo-cloud-hero.png<br />
-https://payload.cargocollective.com/1/14/449199/6678730/contact%20illustration.png<br />
+http://taylorehat.com/images/todo-cloud-hero.png
+https://payload.cargocollective.com/1/14/449199/6678730/contact%20illustration.png
 https://cdn-images-1.medium.com/max/2000/1*c5O3gwZZMKlXiaX968cTXQ.png
 ```

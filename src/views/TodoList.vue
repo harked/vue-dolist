@@ -15,6 +15,7 @@
         <div v-for="todo in todos" :key="todo.id" class="list">
           <label class="vuedo-material-checkbox">
             <input type="checkbox" v-model="todo.completed">
+            <span></span>
           </label>
           <div class="text" :class="{completed: todo.completed}"> 
             {{ todo.text }}
@@ -58,7 +59,9 @@
       todos: {
         handler: function (todos) {
           todoStorage.save(todos)
-        }
+        },
+        // Toogle checkbox
+        deep: true
       }
     },
 

@@ -14,13 +14,9 @@
 </template>
 
 <script>
-  import TodoList from "./views/TodoList.vue";
-
   export default {
     name: "todo-app",
-    components: {
-      TodoList
-    }
+    components: {}
   }
 </script>
 

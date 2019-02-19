@@ -16,7 +16,10 @@
           <label class="vuedo-material-checkbox">
             <input type="checkbox" v-model="todo.completed">
           </label>
-          <div class="text" :class="{completed: todo.completed}"> {{ todo.text }}</div>
+          <div class="text" :class="{completed: todo.completed}"> 
+            {{ todo.text }}
+            <span title="Remove list" class="delete-list" @click="removeTodo(todo)"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -29,7 +32,7 @@
   const STORAGE_KEY = 'vue-do-list-cnstack-2.0'
   const todoStorage = {
     fetch: function () {
-      var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
+      let todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
       todos.forEach(function (todo, index) {
         todo.id = index
       })
@@ -71,6 +74,11 @@
         });
         this.newTodo = "";
       },
+
+      removeTodo: function (todo) {
+        this.todos.splice(this.todos.indexOf(todo), 1)
+      },
+
     },
   };
 </script>
@@ -244,5 +252,29 @@
 
   .vuedo-material-checkbox > input:checked + span::after {
     border-color: #fff;
+  }
+
+  .list .delete-list {
+    display: none;
+    position: absolute;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    font-size: 35px;
+    color: #e74c3c;
+  }
+
+  .list .delete-list:hover {
+    color: #c0392b;
+    cursor: pointer;
+  }
+
+  .list .delete-list:after {
+    content: '×';
+  }
+
+  .list:hover .delete-list {
+    display: inline-block;
   }
 </style>

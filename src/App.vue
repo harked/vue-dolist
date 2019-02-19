@@ -1,20 +1,28 @@
 <template>
   <div id="todo-app">
-    <img alt="Vue-dolist!" src="./assets/todo-cloud-hero.png">
-    <Header />
+    <div class="main-nav vuedo-nav">
+      <router-link class="vuedo-nav-menu" to="/"> To-do </router-link>
+      <router-link class="vuedo-nav-menu" to="/about"> About </router-link>
+      <router-link class="vuedo-nav-menu" to="/contact"> Contact </router-link>
+    </div>
+
+    <img alt="Vue logo" src="./assets/todo-cloud-hero.png">
+    <p class="title"> What are You going <span class="blue-todo">to-Do</span> when you are not saving the world? </p>
+
     <router-view />
+    <TodoList />
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header';
+  import TodoList from "./views/TodoList.vue";
 
-export default {
-  name: "todo-app",
-  components: {
-    Header
+  export default {
+    name: "todo-app",
+    components: {
+      TodoList
+    }
   }
-}
 </script>
 
 <style>
@@ -52,5 +60,29 @@ export default {
 
   .blue-todo {
     color: #2896d7;
+  }
+
+  .strong {
+    font-weight: bold;
+  }
+
+  .vuedo-nav {
+    margin: 0 30px 50px 30px;
+    text-align: center;
+  }
+
+  .vuedo-nav .vuedo-nav-menu {
+    text-decoration: none;
+    margin: 0 30px;
+    border-radius: 0;
+    padding: 10px;
+    color: #2896d7;
+    font-weight: bold;
+  }
+  .vuedo-nav .vuedo-nav-menu:hover {
+    text-decoration: none;
+    margin: 0 30px;
+    background-color: #2896d7;
+    color: #fff;
   }
 </style>

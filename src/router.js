@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import TodoList from './views/TodoList.vue'
 import About from './views/About.vue'
 import Contact from './views/Contact.vue'
 
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'todolist',
+      component: TodoList
     },
     {
       path: '/about',

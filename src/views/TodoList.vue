@@ -6,20 +6,17 @@
 </template>
 
 <script>
-  import AddTodo from '../components/AddTodo';
-  import Todos from '../components/Todos';
-
   export default {
-    name: 'Home',
-    components: {
-      AddTodo,
-      Todos
-    },
+    name: 'TodoList',
+
+    components: {},
+    
     data() {
       return {
         todos: []
       }
     },
+    
     methods: {
       deleteTodo(id) {
         this.todos = this.todos.filter(todo => todo.id !== id);
